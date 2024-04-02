@@ -1,57 +1,15 @@
-// import Axios from 'axios'
-
-// const BASE_URL = process.env.NODE_ENV === 'production' ? '/api/' : '//localhost:3030/api/'
-
-// var axios = Axios.create({
-//     withCredentials: true,
-// })
-
-// export const httpService = {
-//     get(endpoint, data) {
-//         return ajax(endpoint, 'GET', data)
-//     },
-//     post(endpoint, data) {
-//         return ajax(endpoint, 'POST', data)
-//     },
-//     put(endpoint, data) {
-//         return ajax(endpoint, 'PUT', data)
-//     },
-//     delete(endpoint, data) {
-//         return ajax(endpoint, 'DELETE', data)
-//     },
-// }
-
-// async function ajax(endpoint, method = 'GET', data = null) {
-//     try {
-//         const res = await axios({
-//             url: `${BASE_URL}${endpoint}`,
-//             method,
-//             data,
-//             params: method === 'GET' ? data : null,
-//         })
-
-//         return res.data
-//     } catch (err) {
-//         console.log(`Had Issues ${method}ing to the backend, endpoint: ${endpoint}, with data: `, data)
-//         console.dir(err)
-//         if (err.response && err.response.status === 401) {
-//             sessionStorage.clear()
-//         }
-//         throw err
-//     }
-// }
-
-
-
 
 import Axios from 'axios'
 
+// console.log(process.env.NODE_ENV);
+
+
 const BASE_URL = process.env.NODE_ENV === 'production'
     ? '/api/'
-    : 'http://127.0.0.1:3030/api/'
+    : '//localhost:3030/api/'
 
 
-var axios = Axios.create({
+const axios = Axios.create({
     withCredentials: true
 })
 
@@ -71,7 +29,6 @@ export const httpService = {
 }
 
 async function ajax(endpoint, method = 'GET', data = null) {
-    // console.log('data:', data)
     try {
         const res = await axios({
             url: `${BASE_URL}${endpoint}`,
@@ -81,10 +38,10 @@ async function ajax(endpoint, method = 'GET', data = null) {
         })
         return res.data
     } catch (err) {
+        console.log(`Had Issues ${method}ing to the backend, endpoint: ${endpoint}, with data: `, data)
+        console.dir(err)
         if (err.response && err.response.status === 401) {
-            sessionStorage.clear();
-            // window.location.assign('/')
-            throw new Error('Unauthorized!')
+            sessionStorage.clear()
         }
         throw err
     }
