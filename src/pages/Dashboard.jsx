@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import { ToyChart } from "../cmps/Chart";
-import { BarChart } from "../cmps/BarChart";
-import { LineChart } from "../cmps/LineChart";
-import { PieChart } from "../cmps/PieChart";
+// import { BarChart } from "../cmps/BarChart";
+// import { LineChart } from "../cmps/LineChart";
+// import { PieChart } from "../cmps/PieChart";
 
 
 export function Dashboard() {
@@ -21,9 +21,9 @@ export function Dashboard() {
         <section className="dashboard-container">
             <h1>Labels chart:</h1>
             <ToyChart labelCounts={labelCounts} />
-            <BarChart toys={toys} />
+            {/* <BarChart toys={toys} />
             <LineChart labelCounts={labelCounts} />
-            <PieChart toys={toys} />
+            <PieChart toys={toys} /> */}
         </section>
     )
 }
